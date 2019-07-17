@@ -1,0 +1,35 @@
+#Maurice J Colon
+#CSI 32
+#FINAL
+
+def intro():
+    print( "This Program finds any integers in the string ""madhjfe ert 3456"" and converts the str into int data type for numbers and puts it in a list")
+    
+
+
+def prompt():#takes string Variable as initlist then uses split list variable to do splitmethod#
+
+    initlist = "madhjfe ert 3456"
+    splitlist = initlist.split(" ")
+    return splitlist#return that so we can pass it through loop function#
+
+def looplist(splitlist):
+
+    for i in range(len(splitlist)):#use range len b/c we iteration through each position checking if its a digit#
+        if splitlist[i].isdigit()== True:#if true we change the digit string to a int data format#
+
+            splitlist[i] = int(splitlist[i])
+
+def main():
+    
+    intro()
+    
+    splitlist = prompt()
+    
+    looplist(splitlist)
+    
+    print(splitlist)
+
+main()
+
+            
