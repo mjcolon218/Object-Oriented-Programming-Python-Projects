@@ -1,0 +1,13 @@
+
+# Maurice J Colon
+#CSI 32 FINAL
+#Factorial
+
+def main():
+    n = int(input("Enter a number you want the Factorial of"))
+    factorial = 1
+    while n>0:#while N is Greater then we will continue the method
+        factorial = factorial * n#1*n,5*n-1,20*3,60*2,120*1 #
+        n = n-1#This is subtracting the number  minus  1 or just counting down#
+        print (factorial)
+main()
