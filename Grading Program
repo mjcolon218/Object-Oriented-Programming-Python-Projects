@@ -1,0 +1,44 @@
+#Maurice J Colon
+#CSI 32 Grading Program
+
+
+def GradingQuiz():
+    a = int(input("Whats the Grade of your first quiz?"))#I Found Global assignments very useful for this homework i had trouble passing variables through methods
+    b = int(input("Whats the Grade of your second quiz?"))#Prompting for Grades
+    return a,b
+a,b = GradingQuiz()#Global Assignment of Variables
+def GradingMidterm():
+    c = int(input("Whats your Midterm Score?"))
+    return c
+c = GradingMidterm()
+def GradingFinal():
+    d = int(input("Whats the Grade of your Final?"))
+    return d
+d = GradingFinal()
+def QuizConversion():
+
+    quiz1 = 10 * a
+    quiz2 = 10 * b
+    total = (quiz1 + quiz2)/ 2
+    return quiz1,quiz2,total
+quiz1,quiz2,total = QuizConversion()
+print("First Quiz:",quiz1,"%" "\n Second Quiz:",quiz2,"%" "\n Midterm:",c,"%" "\n Final:",d,"%")
+
+
+
+def AverageScore():#When I run Main() the program gives me an error message but when I CTRL and 5 it runs fine
+    score = .25 * total + .25 * c + .50 * d
+    if score>= 90: print ("You earned an A")
+    elif score>= 80: print("You earned an B")
+    elif score>= 70: print("You earned an C")
+    elif score>= 60: print("You earned an D")
+    else: print("F, Sorry Try again")
+score = AverageScore()
+def main():
+    
+    QuizConversion()
+
+    score()
+
+   
+    
