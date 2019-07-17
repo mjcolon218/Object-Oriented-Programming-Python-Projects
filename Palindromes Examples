@@ -1,0 +1,30 @@
+#Maurice J Colon
+#Data Structures HW 10 #5
+# One main thing I got out of this assignment is the Join method ,
+# I found it very useful!!!
+
+def palidrome(s):#Function for the palindrome method /checker
+    """ Creating function for palindrome to make sure everything is
+        lower case  and no special character, also stores in a seperate string """
+    
+    s = " ".join(i for i in s if i.isalpha()).lower()#Setting variable as empty string while implementing join method with Nested Loop
+
+
+    if len (s)<1:# checking string length and firing off the recursion process!
+            print("BingO PALIDROME")#if this basecase is met then we will print the statement for a successful palidrome
+            return True
+            
+    
+
+    else:# This is the recursive process calling it self until length <1 is met to stop function
+        if s[0] == s[-1]:# Comparing First and Last lettar.
+
+            return palidrome(s[1:-1])#compares first and last elements and increments a single index each recursive call till length of the string is less than one 
+        else:
+             print("Nope Try Again")# If comparison fail we call this print statement and return false to break recursive call because we do not have a palidrome
+        return False
+    
+def main():#Prompting for string to be passed through the paldirome recursive function
+     s = str (input("Talk To ME please PALIDROMES oNLyy<<<<<                  >>>>>>>"))    
+     print (palidrome(s))      
+
