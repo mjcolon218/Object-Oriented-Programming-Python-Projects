@@ -1,0 +1,54 @@
+#Maurice J Colon
+#Hw 10 
+# fib.py
+
+# standard definition of the Fibonacci function
+def loopFib(n):
+    # pre: n > 0
+    # returns the nth Fibonacci number
+
+    curr = 1
+    prev = 1
+    for i in range(n-2):
+        curr, prev = curr+prev, curr
+    return curr
+
+# recursive definition of Fibonacci function # We had to make another variable result !!!!
+def recFib(n):
+    print('Computing fib(' + str(n) +')')
+    if n < 3:
+        return 1
+    else:
+        result = recFib(n-1) + recFib(n-2)
+        print('Done with Fib(' + str(n) + ') returning ' + str(result))
+        return recFib(n-1) + recFib(n-2)
+    
+
+# efficient recursive definition of Fibonacci function
+def newFib(n):
+    if n < 1:
+            print(" cannot find fibonacci sequence for number less than \n 1..it has to have at least 1 iteration")
+            return None
+    if n == 1:
+        return 0
+    return newFib2(1,1,0,n)
+                    
+    return newFib2(1,1,0,n)
+
+def newFib2(curr,prev,i,n):
+    if i == n-2:
+        return curr
+    else:
+        return newFib2(curr+prev,curr,i+1,n)
+
+#--------- USING -----------------
+# Fib(3) was called 21 times
+
+
+#print(newFib(2))These values will never work because "i" will never  be equal
+#to n-2 which calls call the recursive function to stop "i is  not equal to -1 never !# We will never reach the basecase!
+
+#print(newFib(1))
+
+print(newFib(3))# it works for all values greater than or equal to  3
+print(recFib(5))
