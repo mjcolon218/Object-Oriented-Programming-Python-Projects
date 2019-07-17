@@ -1,0 +1,70 @@
+# unitTestingCard.py
+# unit testing rank
+#Maurice J Colon
+#NO BUGS
+import sys
+import unittest
+
+from Card import *
+
+class RankTest(unittest.TestCase):
+  """ Tests Rank methods: rank() and rankName() """
+  
+  def testRanks(self): # unit test for ranks 1-13
+    """ creates cards of rank 1 through 13 of clubs (can be any other fixed suit),
+    and verifies that the created card's rank is equal to the
+    rank it was created with """
+    
+    for i in range(1,14):
+      myCard = Card(i,'c') # create i of clubs
+##      print("We just created",myCard)#for testing purposes had to figure out what was going on behind the scenes.
+      self.assertEqual(myCard.rank(),i) # verifies that the card's rank is i
+##      print("We are now comparing",myCard.rank(),"to",i,"and they should be the same")
+
+  def testRankName(self): # unit test for rank names, 'ace', 'two', 'three',...
+    """ creates cards of rank 1 through 13 of clubs (can be any other fixed suit),
+    and then checks for equivalency: card's rank name, by calling method rankName,
+    and the rank name that was given to the card - note that the number was used for rank,
+    so it needs to be 'converted' to a rank name"""
+    rankNames = ['Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Jack','Queen','King']
+    for i in range(1,14):
+      myCard = Card(i,'h')
+      self.assertEqual(myCard.rankName(),rankNames[i-1])
+
+class SuitTest(unittest.TestCase):
+  """ Tests Suit methods: suit() and suitName() """
+    
+    
+  def testSuits(self): # unit test for suits, 'c', 'd', 'h', 's'
+    """ creates cards of rank 4 (any other fixed rank can be used)of 
+    c (clubs), d (diamonds), h(hearts) and s (spades), and 
+    verifies that the created card's suit is equal to the suit it was 
+    created with (c,d,h,s) """
+    suitNames = ['c','d','h','s']# Setting the variable to check for "c""d""h""s" 
+    for suit in suitNames:        
+      myCard = Card(4,suit)#Creation of the card with the value/rank 4
+      self.assertEqual(myCard.suit(),suit)#checking each iteration to verify the Suit
+    
+  def testSuitName(self): # unit test for suit names, 'clubs', 'diamonds',...
+    """ creates cards with all the suit names ...
+    and then checks for equivalency: card's suit name, by calling method suitName,
+    and the suit name that was given to the card - note that the letter (c,d,h, or s) 
+    was used for suit, so it needs to be converted to a corresponding 'full' suit name"""
+    suitNames = ['Clubs','Diamonds','Hearts','Spades']
+    for suit in "cdhs":#I had to use the Self.assert method individually because I couldnt figure out how to do it with two for loops !
+      for rank in range(1,14):
+        myCard = Card(rank, suit)
+        if suit == 'c':
+          self.assertEqual(myCard.suitName(),suitNames[0])
+        if suit == 'd':
+          self.assertEqual(myCard.suitName(),suitNames[1])
+        if suit == 'h':
+          self.assertEqual(myCard.suitName(),suitNames[2])
+        if suit == 's':
+          self.assertEqual(myCard.suitName(),suitNames[3])
+def main(argv):
+  unittest.main()
+
+if __name__ == '__main__':
+   main(sys.argv)
+ 
