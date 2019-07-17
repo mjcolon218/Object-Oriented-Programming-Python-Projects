@@ -1,0 +1,124 @@
+from cs1graphics import *
+
+
+paper = Canvas(700,550, 'skyBlue', 'My World')
+#paper = Canvas()
+#paper.setBackGroundColor('skyblue')#Alt#Canvas(300,200, 'skyblue', 'My World')#
+#paper.setWidth(400)
+#paper.setTitle('My World')
+
+sun = Circle()#Cirlce(30,Point(250,50)) Effeciecy way Code the same thing
+sun.setRadius(70)#SetRadius How big the circle you want
+sun.setFillColor('yellow')#SetFillColor Command for the sun
+sun.move(655, 50)#X,Y Left,Right and Down,Up
+paper.add(sun)#Add the sun to Canvas
+sun.setBorderWidth(5)#OutLines the thickness
+
+
+house = Square(250, Point(350,425))#Creation of the House Frame#
+house.setFillColor('White')
+paper.add(house)
+
+#Creation of Chimney
+chimney = Rectangle(25,70, Point(450,240))#Rectangles have Length And Width 
+chimney.setFillColor('red')
+paper.add(chimney)
+
+tree = Polygon(Point(50,80),Point(30,140),Point(70,140))
+tree.setFillColor('darkgreen')
+paper.add(tree)
+tree.setDepth(75)
+tree.scale(4)#Scale to manipulate the size of the object
+tree.addPoint(Point(50,120),2)#Add point in middle of tree,creates a concave angle
+tree2 = tree.clone()#Clone of the same tree
+paper.add(tree2)
+tree2.move(115,135)
+tree2.scale(.7)#scale up or Down
+tree2.setDepth(10)
+smoke = Path(Point(155,70), Point(150,65),#Creation of the smoke for the Chimney
+             Point(160,55), Point(155,50))
+paper.add(smoke)
+smoke.scale(3)
+smoke.setBorderColor('black')
+smoke.move(275,140)
+smoke2 = smoke.clone()
+smoke2.move(60,5)
+paper.add(smoke2)
+smoke2.setBorderColor('black')
+smoke2.scale(1)
+smoke3 = smoke.clone()
+paper.add(smoke3)
+smoke3.move(40,-65)#Manipulating the position
+smoke3.setBorderColor('grey')
+#Path between point you can create objects also Sunrays Creation
+sunraySw = Path(Point(225,75), Point(210,90))
+sunraySw.setBorderColor('yellow')
+sunraySw.setBorderWidth(6)#Demonstrating clone,scale,rotate,and move methods#
+paper.add(sunraySw)
+sunraySw.scale(1.7)
+sunraySw.move(400,43)
+sunraySw.rotate(-15)
+sunray2 = Path(Point(225,75), Point(210,90))
+sunray2.setBorderColor('yellow')
+sunray2.setBorderWidth(6)
+sunray2.scale(1.7)
+paper.add(sunray2)
+sunray2.move(360,5)
+sunray2.rotate(15)
+sunray3 = Path(Point(225,75), Point(210,90))
+sunray3.setBorderColor('yellow')
+sunray3.setBorderWidth(6)
+paper.add(sunray3)
+sunray3.move(360,-45)
+sunray3.scale(1.5)
+sunray4 = sunraySw.clone()
+sunray4.move(50,5)
+sunray4.scale(1)
+paper.add(sunray4)
+sunray3.rotate(45)
+sunray4.rotate(-30)
+
+#Trunk Creation
+trunk = Rectangle(15,415, Point(50,450))
+trunk.setFillColor('brown')
+trunk.setBorderColor('black')
+paper.add(trunk)
+trunk.setDepth(1)
+trunk2 = trunk.clone()
+paper.add(trunk2)
+trunk2.move(115,86)
+                  
+#Creation of GRASS USiNG RECTANGLE
+grass = Rectangle(1000,150,Point(350,550))
+grass.setFillColor('green')
+grass.setDepth(15)
+paper.add(grass)
+grass.setBorderColor('green')
+
+#DOORcreatiON
+door = Rectangle(10,25, Point(250,435))
+door.setFillColor('brown')
+door.setBorderColor('black')
+paper.add(door)
+door.scale(3)
+#Door Knob
+knob = Circle(4,Point(255,439))
+knob.setFillColor('black')
+paper.add(knob)
+#windows
+window = Square(15,Point(325, 360))
+window.setFillColor('red')
+window.setBorderColor('black')
+paper.add(window)
+window.scale(3)
+window2 = window.clone()
+paper.add(window2)
+window2.move(65,0)
+#ROOF CREATION
+roof = Polygon(Point(105,105),Point(175,105),Point(170,85),Point(110,85))
+roof.setFillColor('darkgrey')
+roof.setDepth(30)
+chimney.setDepth(20)
+paper.add(roof)
+roof.scale(4)
+roof.move(105,200)
