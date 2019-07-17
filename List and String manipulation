@@ -1,0 +1,16 @@
+#Maurice J Colon
+#CSI 32  assignment (2) string conversion
+
+def getwords():
+    b = input("Hello!" "Please enter a string of words seperated by commas:")
+    thelist = b.split()#V as variable to split string with space#
+    print(thelist)#Printng to check for the split#
+    newlist =[]#s is the empty string#
+    for a in thelist:# a is random variable looping through the elements in v looking for a digit#
+            if a.isdigit():#Finds digit add to empty list#
+                newlist.append(int(a))
+            else:
+                newlist.append(a)#Everything else in loop that is string adds to the emptylist also#
+              
+                print("your new list is",newlist)# Cant get it to stop looping 3 time had trouble # 
+
