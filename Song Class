@@ -1,0 +1,43 @@
+#Maurice J Colon
+#CSI 32 Final
+#Song Class
+
+
+class Song:
+    def __init__ (self, title, artist, length, composer):#Setting the attributes for the class 
+        self.title = title
+        self.artist = artist
+        self.length = length
+        self.composer = composer
+
+    def setTitle(self,title):#Variables for each attribute
+        self.tile = title
+    def setArtist(self,artist):
+        self.artist = artist
+    def setLength(self,length):
+        self.length = length
+    def setComposer(self,composer):
+        self.composer = composer
+
+    def getTitle(self):#Get method returns the specific attribute we set
+        return self.title
+    def getArtist(self):
+        return self.artist
+    def getLength(self):
+        return self.length
+    def getComposer(self):
+        return self.composer
+
+    def __str__(self):#Setting everything to string format so we wont have no print issues
+
+        return "Title: " + self.title + "\n"+ "Artist: " + self.artist + "\n"+ "Length: " + str(self.length) + "\n" + "Composer: " + self.composer
+
+    def display(self):#display to show you al the info you asked for 
+        print("Title: ",self.title)
+        print("Artist: ",self.artist)
+        print("Length: ",self.length)
+        print("Composer: ",self.composer)
+
+
+x = Song("Im Bad","Michael Jackson","2:30","Prince")
+x.display()
