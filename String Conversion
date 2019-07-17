@@ -1,0 +1,39 @@
+#Maurice J Colon
+#CSI 32
+#HW 3 More strings
+
+
+
+
+def intro():
+    print( "This program Prompts user for a string seperated by comma and removes items ")
+
+    print()
+
+    List = (input(" Enter your List PLEASE:? "))
+    print
+    print(List," !!!LIST AS IS OR BEFORE THE SPLIT!!! ")
+    split = List.split(" ")
+    print(split, " This is your New list SPLIT: ")
+
+    question = input( " Would you like to remove something: ['Y'/'N']?")
+
+    if question == 'Y':
+
+        modification = input(" What item from the list you want REMOVED:")
+
+        newlist = []
+
+        print("MODIFIYING")
+
+        for v in split:
+
+            if v != modification:
+
+                newlist.append(v)
+        print(" THE NEW LIST IS:")
+        print()
+        print(newlist)
+
+intro()        
+        
