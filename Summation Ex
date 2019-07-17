@@ -1,0 +1,12 @@
+#Maurice J Colon
+#CSI32 Final
+# Sum of n Positive integers
+
+def naturalSum(n):
+    if n<=1:
+        return n
+    else:
+        return n + naturalSum(n-1)
+prompt = int(input("enter a number:"))
+answer = naturalSum(prompt)
+print(" Your answer is,", answer)
