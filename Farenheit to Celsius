@@ -1,0 +1,12 @@
+#Maurice J Colon
+#CSI 31 FROM FAR TO CELSIUS
+
+def main():
+    print('This Program converts from Farenheit to Celsius.')
+    Farenheit = int(input(" ITS REALLY NICE OUTSIDE WHATS THE TEMP?:"))
+    temperture =(Farenheit - 32) *.5556
+    print("its February and its :",temperture,"degrees holy crap")
+main()
+This Program converts from Farenheit to Celsius.
+ ITS REALLY NICE OUTSIDE WHATS THE TEMP?:212
+its February and its : 100.008 degrees holy crap
