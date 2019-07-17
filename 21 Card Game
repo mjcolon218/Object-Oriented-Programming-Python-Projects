@@ -1,0 +1,110 @@
+from PlayerClass import Player
+from Deck import Deck
+from Card import Card
+
+class Gametime:
+    ''' Creates an instance of the game and runs it.'''
+    def __init__(self):
+        self.p1 = Player()  #Player 1
+        self.p2 = Player()  #Player 2
+        self.pList = [self.p1,self.p2]
+        self.scoreBoard = Score(self.pList)
+        self.deck = Deck() #Our deck of 52 cards
+        self.deck.shuffle() #Shuffle the deck to start the game
+        self.showRules()    #Show the rules of the game
+        self.trumpSuit = self.deck.showRandomSuit()  #Get the trumpSuit
+        while self.deck.size() > 0:
+            self.p1.drawCard(self.deck)
+            self.p2.drawCard(self.deck)
+            self.compareCards()
+        print("done")
+        self.scoreBoard.printScores()
+
+
+
+
+    def showRules(self):
+        ''' Prints the rules of the Game '''
+        print("Welcome to Bridge.\n"+
+        ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"+
+        "The game is played by two players.\n"+
+        "A deck of cards is put face down and a random card is drawn from the deck,\n"+
+        "both players see the trump suit and the card is put back into a random place\n"+
+        "into the deck.\n"+
+        "At each turn: players grab one card each from the top of the deck and put them\n"+
+        "face up on the table.\n"+
+        "If both cards have the same suit, then the player with the highest ranked card\n"+
+        "wins this turn, takes this pair of cards and places them into his/her pile.\n"+
+        "If cards have different suits, then the person with a trump card wins his turn,\n"+
+        "takes this pair of cards and places them into his/her pile.\n"+
+        "If the cards have different suits and none of them is a trump, then it is a tie,\n"+
+        "the cards are discarded.\n"+
+        "The game ends when there is no more cards in the deck. The person with more\n"+
+        "cards in his/her pile wins.\n"+
+        "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n")
+        return
+
+    def compareCards(self):
+        """ Compares each players suit and rank,
+            if the suit is a match then the player with the highest
+            rank wins round. If suit is different then nobody wins and those
+            two cards are discarded unless a player has the trump suit in which
+            case that player wins the round"""
+        # We have to draw a card for each player then play the hand
+        #Get p1's card (play it too?)
+        self.p1.drawCard(self.deck) #Draw a card from the deck for player 1
+        p1cardSuit = self.p1.cardInHand.suit() #Get the suit for p1
+        p1cardRank = self.p1.cardInHand.rank()#Get the rank of the card for p1
+        #--Player 2 stuff --
+        #Get p2's card (play it too?)
+        self.p2.drawCard(self.deck) #Draw a card from the deck for player 2
+        p2cardSuit = self.p2.cardInHand.suit() #Get the suit for p2
+        p2cardRank = self.p2.cardInHand.rank()#Get the rank of the card for p2
+        #Compare them
+        
+        #Do some logical stuff
+        if p1cardSuit == p2cardSuit:#The Suits are equal
+            if p1cardRank > p2cardRank:#Player one card beats player two
+                
+                
+                self.scoreBoard.addPoint(self.p1)#add points to player 1
+            else:#Player two wins the round!
+                self.scoreBoard.addPoint(self.p2)#add points to player 2
+        else: #Suits are different
+            if p1cardSuit != p2cardSuit:#if player one and player two suits are different
+                                        #if player one or player have the trump card
+                                        #that player wins the round
+                if p1cardSuit == self.trumpSuit:
+                    self.scoreBoard.addPoint(self.p1)
+                if p2cardSuit == self.trumpSuit:
+                    self.scoreBoard.addPoint(self.p2)
+        #Assign points
+    def playGame(self):
+        """ Initiated the game class and plays it all the way
+            through the rounds """
+
+class Score:
+    ''' Maintain's record of each players points '''
+    def __init__(self, playerNames):
+        self.players = dict() #This is a dictionary that will store player names and scores i used dictionary so I can give two players the same name !
+        for player in playerNames:
+            self.players[player]= 0
+    def addPoint(self,player):
+        ''' add points to the player's score'''
+        #TODO: add error checking code that tells the user if the player is not in the dict
+        self.players[player]+=1
+
+    def subtractPoint(self, player):
+        ''' deducts points the player's score'''
+        self.players[player]-=1
+
+    def printScores(self):
+        print("Final Scores:")
+        for player in self.players:
+            print(player.getname() + ": " + str(self.players[player]) )
+
+if __name__ == "__main__":
+    Gametime()
+
+    
+            
